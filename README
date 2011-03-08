@@ -1,0 +1,42 @@
+
+			----------------------------------------------------
+			         ------------ pbot 0.3 ------------
+			----------------------------------------------------
+			    --------------- by: hysterix ---------------
+
+Requirements:
+ apache, php 5, curl
+
+What:
+	pbot is a command line version of proxybot.  You can either scrape for a new proxy, check if existing proxies are up, or check the anonymity level of a proxy
+
+How:
+	Call grabproxy.php and get a list of proxies to stdout.  Pipe to a temp file and call testproxy with the same option you called grabproxy with; outputs a list of working proxies in the proxychains format.
+	If you want to test proxy anonymity levels, you must have pbot in an internet accessible folder. You must pass the hostname+path to pbot in order to test for anonymity level.
+	Pbot does not allow you to select which sites to scrape proxies from, it randomly chooses for you based on the amount of proxies you would like returned. 
+
+	Usage: php grabproxy.php [-option] [int]
+	-c               Proxies separated by commas
+	-h               This help menu
+	-n               Proxies separated by newlines
+	int              Maximum number of proxies to return (optional)
+	option           What format to save list as
+	If no maximum number is passed, returns OVER 9000 proxies
+
+	Usage: php testproxy.php [-option] [hostname] [path]
+	Or   : php grabproxy.php [-option] > [path] && php testproxy.php [-option] [hostname] [path]
+	-h               This help menu
+	-c               Proxies separated by commas
+	-n               Proxies separated by newlines
+	-a               Optional: Test anonymity level (requires hostname)
+	option           What format to save list as
+	path             Path to tmp folder location and file name
+	Test if up: php grabproxy.php -n 100 > /tmp/pb.new && php testproxy.php -n /tmp/pb.new > /tmp/pb.good
+	Test anonymity: php grabproxy.php -n 100 > /tmp/pb.new && php testproxy.php -n -a hysterix.com/pbot /tmp/pb.new > /tmp/pb.good
+
+Why:
+	Dedicated to all my niggaz who was down from day one.
+
+Fun:
+	quote of the day:
+	 "LSD is a psychedelic drug which occasionally causes psychotic behavior in people who have NOT taken it."
